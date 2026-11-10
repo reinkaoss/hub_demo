@@ -73,7 +73,7 @@ function SheetContent({ className, children, side = 'right', showClose = true, .
       <DialogPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          'fixed z-50 flex flex-col gap-0 bg-white shadow-xl outline-none transition ease-in-out',
+          'fixed z-50 flex flex-col gap-0 border-border bg-card shadow-xl outline-none transition ease-in-out',
           'data-[state=open]:duration-300 data-[state=closed]:duration-200',
           'data-[state=open]:animate-in data-[state=closed]:animate-out',
           sideClasses[side],
@@ -92,7 +92,7 @@ function SheetContent({ className, children, side = 'right', showClose = true, .
               top: 'max(1rem, calc(env(safe-area-inset-top, 0px) + 0.5rem))',
               right: 'max(1rem, calc(env(safe-area-inset-right, 0px) + 0.5rem))',
             }}
-            className="absolute z-10 inline-flex h-7 w-7 items-center justify-center rounded-full text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal/30"
+            className="absolute z-10 inline-flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-medium/50"
             aria-label="Close"
           >
             <XIcon className="size-4" />
@@ -107,7 +107,7 @@ function SheetHeader({ className, ...props }) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn('flex shrink-0 flex-col gap-1 border-b border-neutral-200 px-5 py-4', className)}
+      className={cn('flex shrink-0 flex-col gap-1 border-b border-border px-5 py-4', className)}
       {...props}
     />
   );
@@ -117,7 +117,7 @@ function SheetFooter({ className, ...props }) {
   return (
     <div
       data-slot="sheet-footer"
-      className={cn('flex shrink-0 items-center justify-end gap-2 border-t border-neutral-200 px-5 py-3', className)}
+      className={cn('flex shrink-0 items-center justify-end gap-2 border-t border-border px-5 py-3', className)}
       {...props}
     />
   );
@@ -127,7 +127,7 @@ function SheetTitle({ className, ...props }) {
   return (
     <DialogPrimitive.Title
       data-slot="sheet-title"
-      className={cn('text-base font-black text-neutral-900', className)}
+      className={cn('text-base font-semibold text-foreground', className)}
       {...props}
     />
   );
@@ -137,7 +137,7 @@ function SheetDescription({ className, ...props }) {
   return (
     <DialogPrimitive.Description
       data-slot="sheet-description"
-      className={cn('text-sm text-neutral-500', className)}
+      className={cn('text-sm text-muted-foreground', className)}
       {...props}
     />
   );

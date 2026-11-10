@@ -32,7 +32,7 @@ function downloadFile(filename, text) {
 function Total({ label, value, tone }) {
   return (
     <Card className="p-4">
-      <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">{label}</p>
+      <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">{label}</p>
       <p className={`mt-1 text-2xl font-bold tabular-nums ${tone}`}>{value}</p>
     </Card>
   );
@@ -105,8 +105,8 @@ export default function ExpensesPage() {
       />
 
       <div className="mb-5 grid gap-3 sm:grid-cols-3">
-        <Total label="Awaiting review" value={totals.pending} tone="text-slate-700" />
-        <Total label="Approved, unpaid" value={totals.approved} tone="text-emerald-700" />
+        <Total label="Awaiting review" value={totals.pending} tone="text-foreground/90" />
+        <Total label="Approved, unpaid" value={totals.approved} tone="text-emerald-300" />
         <Total label="Paid" value={totals.paid} tone="text-signal" />
       </div>
 
@@ -127,7 +127,7 @@ export default function ExpensesPage() {
 
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Spinner size="lg" className="text-slate-300" />
+          <Spinner size="lg" className="text-muted-foreground" />
         </div>
       ) : rows.length === 0 ? (
         <EmptyState icon={Receipt} title="No expenses match" description="Try a different status." />
@@ -136,7 +136,7 @@ export default function ExpensesPage() {
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow className="bg-signal hover:bg-signal">
+                <TableRow className="hover:bg-transparent">
                   {isAdmin ? <TableHead>Ambassador</TableHead> : null}
                   <TableHead>Client</TableHead>
                   <TableHead>Description</TableHead>
@@ -150,27 +150,27 @@ export default function ExpensesPage() {
                   <TableRow
                     key={row.id}
                     onClick={() => setSelectedId(row.id)}
-                    className="cursor-pointer hover:bg-slate-50"
+                    className="cursor-pointer hover:bg-white/5"
                   >
-                    {isAdmin ? <TableCell className="font-medium text-slate-900">{row.ambassadorName}</TableCell> : null}
+                    {isAdmin ? <TableCell className="font-medium text-foreground">{row.ambassadorName}</TableCell> : null}
                     <TableCell>{row.campaignName}</TableCell>
                     <TableCell className="max-w-[260px]">
                       {row.description}
                       {row.isChargeback ? (
-                        <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-[0.6rem] font-semibold uppercase text-amber-700">
+                        <span className="ml-2 rounded bg-amber-400/15 px-1.5 py-0.5 text-[0.6rem] font-semibold uppercase text-amber-200">
                           chargeback
                         </span>
                       ) : null}
                     </TableCell>
                     <TableCell
-                      className={`text-right font-medium tabular-nums ${row.amount === 0 ? 'text-amber-600' : ''}`}
+                      className={`text-right font-medium tabular-nums ${row.amount === 0 ? 'text-amber-300' : ''}`}
                     >
                       {formatGBP(row.amount)}
                     </TableCell>
                     <TableCell>
                       <StatusBadge status={row.status} />
                     </TableCell>
-                    <TableCell className="text-slate-500">{timeAgo(row.createdAt)}</TableCell>
+                    <TableCell className="text-muted-foreground">{timeAgo(row.createdAt)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

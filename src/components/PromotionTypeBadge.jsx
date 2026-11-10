@@ -40,9 +40,9 @@ const CHIPS = {
 
 const ICONS = {
   whatsapp: { Icon: MessageCircle, className: 'bg-emerald-500' },
-  email: { Icon: Mail, className: 'bg-amber-500' },
+  email: { Icon: Mail, className: 'bg-amber-400/150' },
   face_to_face: { Icon: Users, className: 'bg-signal' },
-  other: { Icon: Sparkles, className: 'bg-slate-500' },
+  other: { Icon: Sparkles, className: 'bg-muted0' },
 };
 
 export function PlatformChip({ type, className }) {
@@ -65,7 +65,7 @@ export function PlatformChip({ type, className }) {
 export function PromotionTypeBadge({ type }) {
   const key = PROMOTION_LABELS[type] ? type : 'other';
   return (
-    <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-medium text-slate-700">
+    <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-medium text-foreground/90">
       <PlatformChip type={key} />
       {PROMOTION_LABELS[key]}
     </span>

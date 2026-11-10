@@ -27,7 +27,7 @@ export function ResourcesTab({ code }) {
               'rounded-full border px-3.5 py-1.5 text-xs font-semibold transition',
               folderId === folder.id
                 ? 'border-signal bg-signal text-white'
-                : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50',
+                : 'border-border bg-card text-muted-foreground hover:bg-white/5',
             )}
           >
             {folder.name}
@@ -37,7 +37,7 @@ export function ResourcesTab({ code }) {
 
       {isLoading ? (
         <div className="flex justify-center py-16">
-          <Spinner size="lg" className="text-slate-300" />
+          <Spinner size="lg" className="text-muted-foreground" />
         </div>
       ) : visible.length === 0 ? (
         <EmptyState icon={FolderX} title="No files in this folder" />
@@ -46,7 +46,7 @@ export function ResourcesTab({ code }) {
           {visible.map((resource, index) => (
             <div
               key={resource.id}
-              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:-translate-y-0.5 hover:border-white/20"
             >
               <button
                 type="button"
@@ -57,8 +57,8 @@ export function ResourcesTab({ code }) {
                 <ResourceThumb resource={resource} />
               </button>
               <div className="p-2.5">
-                <p className="mb-2 truncate text-xs font-medium text-slate-700">{resource.title}</p>
-                <div className="flex items-center gap-3 text-xs text-slate-400">
+                <p className="mb-2 truncate text-xs font-medium text-foreground/90">{resource.title}</p>
+                <div className="flex items-center gap-3 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <Heart className="size-3.5" /> {resource.likes}
                   </span>

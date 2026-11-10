@@ -13,7 +13,7 @@ import { formatDate } from '@/lib/time';
 function AmountEditor({ expense, busy, onSave }) {
   const [value, setValue] = useState(String(expense.amount));
   return (
-    <div className="space-y-1.5 rounded-xl border border-slate-200 bg-slate-50 p-3">
+    <div className="space-y-1.5 rounded-xl border border-border bg-muted p-3">
       <Label htmlFor="expense-amount">Amount (£)</Label>
       <div className="flex gap-2">
         <Input
@@ -47,30 +47,30 @@ export function ExpenseDialog({ expense, canReview, canEdit, busy, onClose, onAp
             <DialogBody>
               <dl className="grid grid-cols-3 gap-4">
                 <div>
-                  <dt className="text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">Amount</dt>
-                  <dd className="mt-0.5 text-lg font-bold tabular-nums text-slate-900">{formatGBP(expense.amount)}</dd>
+                  <dt className="text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">Amount</dt>
+                  <dd className="mt-0.5 text-lg font-bold tabular-nums text-foreground">{formatGBP(expense.amount)}</dd>
                 </div>
                 <div>
-                  <dt className="text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">Status</dt>
+                  <dt className="text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">Status</dt>
                   <dd className="mt-1">
                     <StatusBadge status={expense.status} />
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">Submitted</dt>
-                  <dd className="mt-0.5 text-sm font-medium text-slate-800">{formatDate(expense.createdAt)}</dd>
+                  <dt className="text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">Submitted</dt>
+                  <dd className="mt-0.5 text-sm font-medium text-foreground">{formatDate(expense.createdAt)}</dd>
                 </div>
               </dl>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-foreground/90">
                 {expense.description}
                 {expense.isChargeback ? (
-                  <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-[0.65rem] font-semibold uppercase text-amber-700">
+                  <span className="ml-2 rounded bg-amber-400/15 px-1.5 py-0.5 text-[0.65rem] font-semibold uppercase text-amber-200">
                     chargeback
                   </span>
                 ) : null}
               </p>
               {expense.amount === 0 && expense.status === 'pending' ? (
-                <p className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800">
+                <p className="rounded-xl border border-amber-200 bg-amber-400/15 p-3 text-xs text-amber-800">
                   This entry is worth £0.00, so it cannot be approved. Set the real amount below first.
                 </p>
               ) : null}

@@ -25,7 +25,7 @@ function Stat({ icon: Icon, label, children }) {
         <Icon className="size-4" />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">{label}</p>
+        <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">{label}</p>
         {children}
       </div>
     </Card>
@@ -39,7 +39,7 @@ export default function CampaignDetailPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center py-24">
-        <Spinner size="lg" className="text-slate-300" />
+        <Spinner size="lg" className="text-muted-foreground" />
       </div>
     );
   }
@@ -62,15 +62,16 @@ export default function CampaignDetailPage() {
     <div>
       <Link
         to="/campaigns"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-800"
+        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="size-4" /> Campaigns
       </Link>
 
       <div
-        className="mb-6 flex flex-wrap items-end justify-between gap-3 rounded-2xl p-6 text-white"
+        className="mb-6 flex flex-wrap items-end justify-between gap-3 rounded-2xl border border-white/10 p-6 text-white"
         style={{
-          background: `linear-gradient(135deg, hsl(${campaign.hue} 70% 36%), hsl(${(campaign.hue + 40) % 360} 70% 26%))`,
+          backgroundColor: `hsl(${campaign.hue} 28% 16%)`,
+          boxShadow: `inset 3px 0 0 hsl(${campaign.hue} 55% 58%)`,
         }}
       >
         <div>
@@ -90,21 +91,21 @@ export default function CampaignDetailPage() {
         <TabsContent value="overview" className="space-y-5 pt-4">
           <div className="grid gap-3 sm:grid-cols-3">
             <Stat icon={Target} label="Sign-ups">
-              <p className="text-lg font-bold tabular-nums text-slate-900">
-                {campaign.signups} <span className="text-sm font-medium text-slate-400">/ {campaign.target}</span>
+              <p className="text-lg font-bold tabular-nums text-foreground">
+                {campaign.signups} <span className="text-sm font-medium text-muted-foreground">/ {campaign.target}</span>
               </p>
               <Progress value={percent} className="mt-2" />
             </Stat>
             <Stat icon={Clock} label="Approved hours">
-              <p className="text-lg font-bold tabular-nums text-slate-900">{campaign.approvedHours}</p>
+              <p className="text-lg font-bold tabular-nums text-foreground">{campaign.approvedHours}</p>
             </Stat>
             <Stat icon={Wallet} label="Pay rate">
-              <p className="text-lg font-bold tabular-nums text-slate-900">{formatGBP(campaign.payRate)}/hr</p>
+              <p className="text-lg font-bold tabular-nums text-foreground">{formatGBP(campaign.payRate)}/hr</p>
             </Stat>
           </div>
 
           <Card className="p-5">
-            <h2 className="mb-3 text-sm font-semibold text-slate-800">Team ({campaign.team.length})</h2>
+            <h2 className="mb-3 text-sm font-semibold text-foreground">Team ({campaign.team.length})</h2>
             <ul className="grid gap-3 sm:grid-cols-2">
               {campaign.team.map((member) => (
                 <li key={member.id} className="flex items-center gap-3">
@@ -112,8 +113,8 @@ export default function CampaignDetailPage() {
                     <AvatarFallback>{initials(member.name)}</AvatarFallback>
                   </Avatar>
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-slate-800">{member.name}</p>
-                    <p className="truncate text-xs text-slate-500">{member.university}</p>
+                    <p className="truncate text-sm font-medium text-foreground">{member.name}</p>
+                    <p className="truncate text-xs text-muted-foreground">{member.university}</p>
                   </div>
                 </li>
               ))}

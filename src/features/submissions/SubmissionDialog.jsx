@@ -7,8 +7,8 @@ import { formatDate } from '@/lib/time';
 
 const Fact = ({ label, children }) => (
   <div>
-    <dt className="text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">{label}</dt>
-    <dd className="mt-0.5 text-sm font-medium text-slate-800">{children}</dd>
+    <dt className="text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">{label}</dt>
+    <dd className="mt-0.5 text-sm font-medium text-foreground">{children}</dd>
   </div>
 );
 
@@ -39,21 +39,21 @@ export function SubmissionDialog({ submission, canReview, busy, onClose, onAppro
               </dl>
 
               <div>
-                <p className="mb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">Channel</p>
+                <p className="mb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">Channel</p>
                 <PromotionTypeBadge type={submission.promotionType} />
               </div>
 
               <div>
-                <p className="mb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">
+                <p className="mb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">
                   Description
                 </p>
-                <p className="whitespace-pre-wrap text-sm leading-relaxed text-slate-700">
+                <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/90">
                   {submission.description}
                 </p>
               </div>
 
               {submission.socialUrl ? (
-                <p className="flex items-center gap-1.5 text-xs text-slate-500">
+                <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
                   <ExternalLink className="size-3.5" />
                   <span className="truncate">{submission.socialUrl}</span>
                 </p>

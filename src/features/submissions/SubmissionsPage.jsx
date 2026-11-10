@@ -62,8 +62,8 @@ export default function SubmissionsPage() {
       />
 
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <div className="relative w-full sm:w-72">
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+        <div className="relative w-full sm:w-96">
+          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={search}
             onChange={(event) => setSearch(event.target.value)}
@@ -88,7 +88,7 @@ export default function SubmissionsPage() {
 
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Spinner size="lg" className="text-slate-300" />
+          <Spinner size="lg" className="text-muted-foreground" />
         </div>
       ) : rows.length === 0 ? (
         <EmptyState icon={Clock} title="No timesheets match" description="Try a different status or search term." />
@@ -97,7 +97,7 @@ export default function SubmissionsPage() {
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow className="bg-signal hover:bg-signal">
+                <TableRow className="hover:bg-transparent">
                   {isAdmin ? <TableHead>Ambassador</TableHead> : null}
                   <TableHead>Campaign</TableHead>
                   <TableHead>Channel</TableHead>
@@ -112,22 +112,22 @@ export default function SubmissionsPage() {
                   <TableRow
                     key={row.id}
                     onClick={() => setSelectedId(row.id)}
-                    className="cursor-pointer hover:bg-slate-50"
+                    className="cursor-pointer hover:bg-white/5"
                   >
-                    {isAdmin ? <TableCell className="font-medium text-slate-900">{row.ambassadorName}</TableCell> : null}
+                    {isAdmin ? <TableCell className="font-medium text-foreground">{row.ambassadorName}</TableCell> : null}
                     <TableCell className="max-w-[220px]">{row.campaignName}</TableCell>
                     <TableCell>
                       <PromotionTypeBadge type={row.promotionType} />
                     </TableCell>
                     <TableCell className="text-right tabular-nums">
                       {row.hours}
-                      {row.bonus ? <span className="ml-1 text-xs text-slate-400">+£{row.bonus}</span> : null}
+                      {row.bonus ? <span className="ml-1 text-xs text-muted-foreground">+£{row.bonus}</span> : null}
                     </TableCell>
                     <TableCell className="text-right tabular-nums">{row.reach.toLocaleString('en-GB')}</TableCell>
                     <TableCell>
                       <StatusBadge status={row.status} />
                     </TableCell>
-                    <TableCell className="text-slate-500">{timeAgo(row.createdAt)}</TableCell>
+                    <TableCell className="text-muted-foreground">{timeAgo(row.createdAt)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

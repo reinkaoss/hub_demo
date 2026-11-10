@@ -9,16 +9,14 @@ const badgeVariants = cva(
     variants: {
       variant: {
         // status badges
-        pending: 'bg-slate-100 text-slate-600',
-        approved: 'bg-success/10 text-success-700',
-        paid: 'bg-signal/10 text-signal',
-        rejected: 'bg-error-700/10 text-error-700',
-        // ai verdict badges
-        flagged: 'bg-warning/10 text-warning-700',
-        needs_review: 'bg-amber-50 text-amber-700',
-        // generic
-        default: 'bg-neutral-100 text-neutral-500',
-        outline: 'border border-neutral-200 text-neutral-400',
+        pending: 'bg-white/8 text-zinc-300',
+        approved: 'bg-emerald-400/15 text-emerald-300',
+        paid: 'bg-purple-medium/20 text-[#d4cceb]',
+        rejected: 'bg-red-400/15 text-red-300',
+        flagged: 'bg-orange-400/15 text-orange-300',
+        needs_review: 'bg-amber-400/15 text-amber-200',
+        default: 'bg-white/8 text-zinc-400',
+        outline: 'border border-border text-muted-foreground',
       },
     },
     defaultVariants: {

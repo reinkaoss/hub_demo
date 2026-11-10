@@ -16,8 +16,8 @@ import { useViewer } from '@/lib/viewer';
 import { useAmbassadorsQuery, useSetSuspended } from './ambassadorsQueries';
 import { describePresence } from './presence';
 
-const DOT = { online: 'bg-emerald-500', idle: 'bg-slate-300', never: 'bg-amber-400' };
-const TEXT = { online: 'text-emerald-700 font-semibold', idle: 'text-slate-500', never: 'text-amber-700' };
+const DOT = { online: 'bg-emerald-400', idle: 'bg-zinc-500', never: 'bg-amber-400' };
+const TEXT = { online: 'text-emerald-300 font-semibold', idle: 'text-muted-foreground', never: 'text-amber-200' };
 
 const initials = (name) =>
   name
@@ -61,8 +61,8 @@ export default function AmbassadorsPage() {
       />
 
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <div className="relative w-full sm:w-72">
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+        <div className="relative w-full sm:w-96">
+          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={search}
             onChange={(event) => setSearch(event.target.value)}
@@ -95,7 +95,7 @@ export default function AmbassadorsPage() {
 
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Spinner size="lg" className="text-slate-300" />
+          <Spinner size="lg" className="text-muted-foreground" />
         </div>
       ) : rows.length === 0 ? (
         <EmptyState icon={Users} title="No ambassadors match" description="Try clearing a filter." />
@@ -104,7 +104,7 @@ export default function AmbassadorsPage() {
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow className="bg-signal hover:bg-signal">
+                <TableRow className="hover:bg-transparent">
                   <TableHead>Ambassador</TableHead>
                   <TableHead>University</TableHead>
                   <TableHead>Campaigns</TableHead>
@@ -124,8 +124,8 @@ export default function AmbassadorsPage() {
                             <AvatarFallback>{initials(ambassador.name)}</AvatarFallback>
                           </Avatar>
                           <div className="min-w-0">
-                            <p className="truncate font-medium text-slate-900">{ambassador.name}</p>
-                            <p className="truncate text-xs text-slate-500">{ambassador.email}</p>
+                            <p className="truncate font-medium text-foreground">{ambassador.name}</p>
+                            <p className="truncate text-xs text-muted-foreground">{ambassador.email}</p>
                           </div>
                         </div>
                       </TableCell>
@@ -135,7 +135,7 @@ export default function AmbassadorsPage() {
                           {ambassador.campaigns.map((code) => (
                             <span
                               key={code}
-                              className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[0.65rem] font-semibold text-slate-600"
+                              className="rounded bg-muted px-1.5 py-0.5 font-mono text-[0.65rem] font-semibold text-muted-foreground"
                             >
                               {code}
                             </span>

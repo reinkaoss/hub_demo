@@ -7,7 +7,7 @@ function Tile({ icon: Icon, label, dark }) {
     <div
       className={cn(
         'flex size-full flex-col items-center justify-center gap-2 p-3 text-center',
-        dark ? 'bg-slate-800 text-white/60' : 'bg-slate-100 text-slate-400',
+        dark ? 'bg-zinc-800 text-white/60' : 'bg-muted text-muted-foreground',
       )}
     >
       <Icon className="size-8" />
@@ -18,7 +18,7 @@ function Tile({ icon: Icon, label, dark }) {
 
 function PdfTile() {
   return (
-    <div className="flex size-full flex-col items-center justify-center gap-1 bg-slate-100">
+    <div className="flex size-full flex-col items-center justify-center gap-1 bg-muted">
       <span className="rounded-md bg-red-600 px-2 py-3 text-xs font-extrabold tracking-wider text-white">PDF</span>
     </div>
   );
@@ -44,7 +44,7 @@ export function ResourceThumb({ resource }) {
         loading="lazy"
         decoding="async"
         onError={() => setFailed(true)}
-        className="size-full bg-slate-100 object-cover"
+        className="size-full bg-muted object-cover"
       />
     );
   }

@@ -22,7 +22,7 @@ function TableHeader({ className, ...props }) {
     <thead
       data-slot="table-header"
       className={cn(
-        '[&_tr]:border-b font-bold border-gray-200 centered font-[var(--font-family)] bg-signal',
+        '[&_tr]:border-b border-border bg-muted/70 font-[var(--font-family)]',
         className,
       )}
       {...props}
@@ -34,7 +34,7 @@ function TableBody({ className, ...props }) {
   return (
     <tbody
       data-slot="table-body"
-      className={cn('[&_tr:last-child]:border-0 bg-white font-[var(--font-family)]', className)}
+      className={cn('[&_tr:last-child]:border-0 bg-transparent font-[var(--font-family)]', className)}
       {...props}
     />
   );
@@ -45,7 +45,7 @@ function TableRow({ className, ...props }) {
     <tr
       data-slot="table-row"
       className={cn(
-        'border-b border-gray-100 transition-colors [tbody_&]:hover:bg-[rgba(112,98,171,0.05)] font-[var(--font-family)]',
+        'border-b border-border transition-colors [tbody_&]:hover:bg-white/5 font-[var(--font-family)]',
         className,
       )}
       {...props}
@@ -58,7 +58,7 @@ function TableHead({ className, ...props }) {
     <th
       data-slot="table-head"
       className={cn(
-        'h-10 px-3 py-2.5 text-left align-middle text-xs font-semibold uppercase tracking-wider text-white whitespace-nowrap font-[var(--font-family)]',
+        'h-10 px-3 py-2.5 text-left align-middle text-xs font-semibold uppercase tracking-wider text-muted-foreground whitespace-nowrap font-[var(--font-family)]',
         className,
       )}
       {...props}

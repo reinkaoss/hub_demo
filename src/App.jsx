@@ -16,7 +16,7 @@ const InboxPage = lazy(() => import('@/features/inbox/InboxPage'));
 
 const PageFallback = () => (
   <div className="flex justify-center py-24">
-    <Spinner size="lg" className="text-slate-300" />
+    <Spinner size="lg" className="text-muted-foreground" />
   </div>
 );
 

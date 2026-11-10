@@ -33,7 +33,7 @@ function Field({ id, label, error, hint, children }) {
     <div className="space-y-1.5">
       <Label htmlFor={id}>{label}</Label>
       {children}
-      {hint ? <p className="text-xs leading-relaxed text-slate-500">{hint}</p> : null}
+      {hint ? <p className="text-xs leading-relaxed text-muted-foreground">{hint}</p> : null}
       {error ? <p className="text-xs font-medium text-destructive">{error}</p> : null}
     </div>
   );
@@ -166,7 +166,7 @@ export default function SubmissionFormPage() {
               />
             </Field>
           </div>
-          <p className="-mt-2 rounded-lg bg-slate-50 p-3 text-xs leading-relaxed text-slate-500">{REACH_GUIDANCE}</p>
+          <p className="-mt-2 rounded-lg bg-muted p-3 text-xs leading-relaxed text-muted-foreground">{REACH_GUIDANCE}</p>
 
           <Field id="description" label="Description *" error={errors.description}>
             <Textarea
@@ -194,13 +194,13 @@ export default function SubmissionFormPage() {
               {form.evidence.map((name, index) => (
                 <span
                   key={`${name}-${index}`}
-                  className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white py-1 pl-3 pr-1 text-xs text-slate-600"
+                  className="inline-flex items-center gap-1 rounded-full border border-border bg-card py-1 pl-3 pr-1 text-xs text-muted-foreground"
                 >
                   <span className="max-w-[160px] truncate">{name}</span>
                   <button
                     type="button"
                     aria-label={`Remove ${name}`}
-                    className="rounded-full p-0.5 hover:bg-slate-100"
+                    className="rounded-full p-0.5 hover:bg-white/8"
                     onClick={() => set({ evidence: form.evidence.filter((_, i) => i !== index) })}
                   >
                     <X className="size-3" />
@@ -210,8 +210,8 @@ export default function SubmissionFormPage() {
             </div>
           </Field>
 
-          <div className="space-y-3 border-t border-slate-100 pt-4">
-            <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-700">
+          <div className="space-y-3 border-t border-border pt-4">
+            <label className="flex cursor-pointer items-center gap-2 text-sm text-foreground/90">
               <Checkbox
                 checked={form.includeSocialLink}
                 onCheckedChange={(checked) => set({ includeSocialLink: checked === true })}
@@ -231,7 +231,7 @@ export default function SubmissionFormPage() {
             ) : null}
           </div>
 
-          <div className="flex justify-end gap-2 border-t border-slate-100 pt-4">
+          <div className="flex justify-end gap-2 border-t border-border pt-4">
             <Button type="button" variant="outline" onClick={() => navigate('/submissions')}>
               Cancel
             </Button>
